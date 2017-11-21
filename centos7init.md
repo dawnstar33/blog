@@ -1,8 +1,9 @@
 
 
-#1.光盘安装选项：可调整默认磁盘分区
 
-#2.添加网络
+#1.**光盘安装选项：可调整默认磁盘分区** #
+
+#2.添加网络 #
 
 
 > vi /etc/sysconfig/network-scripts/ifcfg-ens160
@@ -35,7 +36,7 @@
 
 > service network restart
 
-#4.添加内网yum源及epel源
+#3.添加内网yum源及epel源#
 > cd /etc/yum.repos.d/  
 > mkdir old  
 > mv * old/  
@@ -122,17 +123,17 @@
 > yum repolist  
 > yum clean all && yum makecache
 
-#5.selinux关闭
+#4.selinux关闭#
 > setenforce 0  
 > vi /etc/selinux/config
 
-#6.时间同步
+#5.时间同步#
 > yum install ntpdate -y  
 > /usr/sbin/ntpdate time.zju.edu.cn  
 > crontab -e  
     * * 1 * * /usr/sbin/ntpdate time.zju.edu.cn
 
-#7.防火墙
+#6.防火墙#
 > systemctl stop firewalld   
 > systemctl disable firewalld   
 > yum install iptables-services -y  
@@ -148,7 +149,7 @@
 > iptables -P FORWARD DROP  
 > iptables-save
 
-#9.防暴力破解sshd
+#7.防暴力破解sshd#
 > 
 > vi /etc/pam.d/login  
 > vi /etc/pam.d/sshd
@@ -165,7 +166,7 @@
 
     pam_tally2 -r -u xxxx
 
-#10.ssh允许列表（若需要）
+#8.ssh允许列表（若需要）#
 > vi /etc/hosts.allow
 
     sshd:1.1.1.*:allow
