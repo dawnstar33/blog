@@ -1,14 +1,14 @@
 
 
 
-#1.**光盘安装选项：可调整默认磁盘分区** #
+#光盘安装选项：可调整默认磁盘分区
 
-#2.添加网络 #
+#添加网络
 
 
 > vi /etc/sysconfig/network-scripts/ifcfg-ens160
 
-**多网卡配置，单网卡直接写ipaddr不带0；多网卡用ip命令**
+多网卡配置，单网卡直接写ipaddr不带0；多网卡用ip命令
 
     TYPE=Ethernet  
     PROXY_METHOD=none  
@@ -36,7 +36,7 @@
 
 > service network restart
 
-#3.添加内网yum源及epel源#
+#添加内网yum源及epel源
 > cd /etc/yum.repos.d/  
 > mkdir old  
 > mv * old/  
@@ -123,24 +123,24 @@
 > yum repolist  
 > yum clean all && yum makecache
 
-#4.selinux关闭#
+#selinux关闭
 > setenforce 0  
 > vi /etc/selinux/config
 
-#5.时间同步#
+#时间同步
 > yum install ntpdate -y  
 > /usr/sbin/ntpdate time.zju.edu.cn  
 > crontab -e  
     * * 1 * * /usr/sbin/ntpdate time.zju.edu.cn
 
-#6.防火墙#
+#防火墙
 > systemctl stop firewalld   
 > systemctl disable firewalld   
 > yum install iptables-services -y  
 > systemctl start iptables   
 > systemctl enable iptables
 > 
-**如果需要web加80，或修改**
+如果需要web加80，或修改
 
 > /sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT  
 > /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT  
@@ -149,24 +149,24 @@
 > iptables -P FORWARD DROP  
 > iptables-save
 
-#7.防暴力破解sshd#
+#防暴力破解sshd
 > 
 > vi /etc/pam.d/login  
 > vi /etc/pam.d/sshd
 
-**加在第一行**
+加在第一行
 
     auth  required  pam_tally2.so   deny=10 lock_time=600 even_deny_root root_unlock_time=600
 
-**查看锁定的账户信息**
+查看锁定的账户信息
 
     pam_tally2 --user
 
-**解锁账户**
+解锁账户
 
     pam_tally2 -r -u xxxx
 
-#8.ssh允许列表（若需要）#
+#ssh允许列表（若需要）
 > vi /etc/hosts.allow
 
     sshd:1.1.1.*:allow
