@@ -160,11 +160,11 @@
 
 查看锁定的账户信息
 
-    pam_tally2 --user
+> pam_tally2 --user
 
 解锁账户
 
-    pam_tally2 -r -u xxxx
+> pam_tally2 -r -u xxxx
 
 ## SSH允许列表（若需要）
 > vi /etc/hosts.allow
