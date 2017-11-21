@@ -1,3 +1,7 @@
+#添加网络
+vi /etc/sysconfig/network-scripts/ifcfg-ens160
+
+#多网卡配置，单网卡直接ipaddr
 TYPE=Ethernet
 PROXY_METHOD=none
 BROWSER_ONLY=no
@@ -15,26 +19,104 @@ DEVICE=ens160
 ONBOOT=yes
 IPADDR0=10.203.5.40
 IPADDR1=10.203.5.41
-IPADDR2=10.203.5.42
-IPADDR3=10.203.5.43
-IPADDR4=10.203.5.44
-IPADDR5=10.203.5.45
-IPADDR6=10.203.5.46
-IPADDR7=10.203.5.47
-IPADDR8=10.203.5.48
-IPADDR9=10.203.5.49
 PREFIX0=24
 PREFIX1=24
-PREFIX2=24
-PREFIX3=24
-PREFIX4=24
-PREFIX5=24
-PREFIX6=24
-PREFIX7=24
-PREFIX8=24
-PREFIX9=24
 #GATEWAY0=10.203.5.1
 #GATEWAY1=10.203.5.1
 DNS1=10.10.0.21
 DNS2=10.10.2.53
+
+service network restart
+
+#添加内网yum源
+cd /etc/yum.repos.d/
+mkdir old
+mv * old/
+vi CentOS-Base.repo
+
+[base]
+name=CentOS-$releasever - Base
+baseurl=http://mirrors.zju.edu.cn/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+[updates]
+name=CentOS-$releasever - Updates
+baseurl=http://mirrors.zju.edu.cn/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+[extras]
+name=CentOS-$releasever - Extras
+baseurl=http://mirrors.zju.edu.cn/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+yum update -y
+yum install epel-release -y
+vi /etc/yum.repos.d/epel.repo
+
+[epel]
+name=Extra Packages for Enterprise Linux 7 - $basearch
+baseurl=http://mirrors.zju.edu.cn/epel/7/$basearch
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
+failovermethod=priority
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+ 
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
+baseurl=http://mirrors.zju.edu.cn/epel/7/$basearch/debug
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1
+ 
+[epel-source]
+name=Extra Packages for Enterprise Linux 7 - $basearch - Source
+baseurl=http://mirrors.zju.edu.cn/epel/7/SRPMS
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1
+
+vi /etc/yum.repos.d/epel-testing.repo
+
+[epel-testing]
+name=Extra Packages for Enterprise Linux 7 - Testing - $basearch
+baseurl=http://mirrors.zju.edu.cn/epel/testing/7/$basearch
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=testing-epel7&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+
+[epel-testing-debuginfo]
+name=Extra Packages for Enterprise Linux 7 - Testing - $basearch - Debug
+baseurl=http://mirrors.zju.edu.cn/epel/testing/7/$basearch/debug
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=testing-debug-epel7&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1
+
+[epel-testing-source]
+name=Extra Packages for Enterprise Linux 7 - Testing - $basearch - Source
+baseurl=http://mirrors.zju.edu.cn/epel/testing/7/SRPMS
+#mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=testing-source-epel7&arch=$basearch
+failovermethod=priority
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgcheck=1
+
+yum repolist
+yum clean all && yum makecache
+
+
+
+
+
 
