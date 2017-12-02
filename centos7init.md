@@ -131,7 +131,7 @@
 > yum install ntpdate -y  
 > /usr/sbin/ntpdate time.zju.edu.cn  
 > crontab -e  
-    * * 1 * * /usr/sbin/ntpdate time.zju.edu.cn
+    1 1 * * 0 /usr/sbin/ntpdate time.zju.edu.cn
 
 ## 防火墙
 > systemctl stop firewalld   
@@ -142,12 +142,15 @@
 > 
 如果需要web加80，或修改
 
+> /sbin/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT  
+> /sbin/iptables -A INPUT -i lo -j ACCEPT
 > /sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT  
 > /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT  
 > /sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT  
-> iptables -P INPUT DROP  
-> iptables -P FORWARD DROP  
-> iptables-save
+> /sbin/iptables -P INPUT DROP  
+> /sbin/iptables -P FORWARD DROP  
+> /sbin/iptables-save
+
 
 ## 防暴力破解sshd
 > 
