@@ -149,7 +149,7 @@
 > /sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT  
 > /sbin/iptables -P INPUT DROP  
 > /sbin/iptables -P FORWARD DROP  
-> /sbin/iptables-save
+> service iptables save
 
 
 ## 防暴力破解sshd
