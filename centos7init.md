@@ -60,9 +60,9 @@
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
     
-    yum update -y
-    yum install epel-release -y
-    vi /etc/yum.repos.d/epel.repo
+> yum update -y 
+> yum install epel-release -y 
+> vi /etc/yum.repos.d/epel.repo 
     
     [epel]
     name=Extra Packages for Enterprise Linux 7 - $basearch
@@ -128,18 +128,20 @@
 > vi /etc/selinux/config
 
 ## 时间同步
+### ntpdate可能引发时间倒退，待修改
 > yum install ntpdate -y  
 > /usr/sbin/ntpdate time.zju.edu.cn  
 > crontab -e  
     1 1 * * 0 /usr/sbin/ntpdate time.zju.edu.cn
 
 ## 防火墙
+### 使用iptables
 > systemctl stop firewalld   
 > systemctl disable firewalld   
 > yum install iptables-services -y  
 > systemctl start iptables   
 > systemctl enable iptables
-> 
+
 如果需要web加80，或修改
 
 > /sbin/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT  
@@ -151,8 +153,12 @@
 > /sbin/iptables -P FORWARD DROP  
 > service iptables save
 
+###使用firewalld
+> 待补充
+
 
 ## 防暴力破解sshd
+### 会导致root锁死，待思考更优化方式
 > 
 > vi /etc/pam.d/login  
 > vi /etc/pam.d/sshd
