@@ -60,8 +60,8 @@
     gpgcheck=1
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
     
-> yum update -y 
-> yum install epel-release -y 
+> yum update -y   
+> yum install epel-release -y  
 > vi /etc/yum.repos.d/epel.repo 
     
     [epel]
