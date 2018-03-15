@@ -153,7 +153,7 @@
 > /sbin/iptables -P FORWARD DROP  
 > service iptables save
 
-###使用firewalld
+### 使用firewalld
 > 待补充
 
 
