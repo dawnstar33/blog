@@ -29,7 +29,9 @@
 开机启动docker
 
 
-###gitlab ce 安装
+###gitlab ce 安装  
+参考资料		https://docs.gitlab.com/omnibus/docker/
+
 
 >sudo docker run --detach \  
     --hostname itcgit.zju.edu.cn \  
