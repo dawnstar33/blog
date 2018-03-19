@@ -1,9 +1,7 @@
 
 
 
-## 光盘安装选项：可调整默认磁盘分区
-
-## 添加网络
+## 添加或修改网络
 
 
 > vi /etc/sysconfig/network-scripts/ifcfg-ens160
@@ -125,7 +123,9 @@
 
 ## selinux关闭
 > setenforce 0  
-> vi /etc/selinux/config
+> vi /etc/selinux/config  
+
+	SELINUX=disabled
 
 ## 时间同步
 ### ntpdate可能引发时间倒退，待修改
@@ -142,7 +142,7 @@
 > systemctl start iptables   
 > systemctl enable iptables
 
-如果需要web加80，或修改
+####web服务典型设置
 
 > /sbin/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT  
 > /sbin/iptables -A INPUT -i lo -j ACCEPT  
@@ -154,7 +154,10 @@
 > service iptables save
 
 ### 使用firewalld
-> 待补充
+> firewall-cmd --permanent --add-port=80/tcp 
+> firewall-cmd --zone=public --add-port=80/tcp --permanent
+
+> firewall-cmd --list-all 
 
 
 ## 防暴力破解sshd
