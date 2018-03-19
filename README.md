@@ -6,11 +6,9 @@
 ## centos7初始化配置 
 [centos7初始化配置](/centos7init.md)
 ## centos7忘记密码 
-[centos7忘记密码](/forgetpassword7)
+[centos7忘记密码](/forgetpassword7)  
 
-  
+#应用    
 
-#应用  
-
-##gitlab（docker）  
+##gitlab（docker）    
 [gitlab(docker)](/gitlab-docker.md)
