@@ -142,7 +142,7 @@
 > systemctl start iptables   
 > systemctl enable iptables
 
-####web服务典型设置
+#####  #web服务典型设置
 
 > /sbin/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT  
 > /sbin/iptables -A INPUT -i lo -j ACCEPT  
