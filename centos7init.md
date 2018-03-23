@@ -1,6 +1,5 @@
 
 
-
 ## 添加或修改网络
 
 
@@ -184,3 +183,17 @@
     sshd:1.1.1.*:allow
     sshd:1.1.2.2:allow
     sshd:all:deny
+
+## SSH证书登陆
+
+> ssh-keygen -t rsa -P ''   
+  
+生成空密码证书  
+`id_rsa` 私钥  
+`id_rsa.pub` 公钥
+
+>scp /root/.ssh/id_rsa.pub root@192.168.1.181:/root/.ssh/authorized_keys  
+
+到目标机器上
+
+>chmod 600 /root/.ssh/authorized_keys
