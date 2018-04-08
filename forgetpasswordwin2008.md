@@ -2,7 +2,8 @@
 
 插入安装光盘，重光驱启动系统，在选择“安装语言”的地方，按 `shift+F10`
 
-在弹出的CMD窗口中，输入以下地址：
+在弹出的CMD窗口中，输入以下地址：  
+注：vmware虚机盘符会变，`dir`确认
 
 	x:\>c:
 
@@ -10,7 +11,7 @@
 
 	c:\>ren Magnify.exe Magnify1.exe
 
-	c:\>ren cmd.exe Magnify.exe
+	c:\>copy cmd.exe Magnify.exe
 
 	c:\>exit
 
