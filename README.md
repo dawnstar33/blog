@@ -7,6 +7,8 @@
 
 [centos7忘记密码](/forgetpasswordcent7.md)  
 
+[win2008以上忘记密码](/forgetpasswordwin2008.md)  
+
 ## 应用    
 
    
