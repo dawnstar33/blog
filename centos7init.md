@@ -197,3 +197,6 @@
 到目标机器上
 
 >chmod 600 /root/.ssh/authorized_keys
+
+
+    
