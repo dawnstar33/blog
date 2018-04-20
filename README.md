@@ -5,6 +5,8 @@
 
 [centos7初始化配置](/centos7init.md)
 
+[centos7下为SSH增加OTP认证](/sshotp.md)
+
 [centos7忘记密码](/forgetpasswordcent7.md)  
 
 [win2008以上忘记密码](/forgetpasswordwin2008.md)  
