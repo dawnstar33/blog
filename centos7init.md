@@ -126,6 +126,9 @@
 
 	SELINUX=disabled
 
+## 安装网络命令包
+> yum install net-tools
+
 ## 时间同步
 ### ntpdate可能引发时间倒退，待修改
 > yum install ntpdate -y  
