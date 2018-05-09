@@ -28,6 +28,10 @@
 
 开机启动docker
 
+>docker exec -it xxxxx /bin/bash  
+
+进入容器
+
 
 ###gitlab ce 安装  
 参考资料		https://docs.gitlab.com/omnibus/docker/
