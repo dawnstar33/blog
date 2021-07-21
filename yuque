@@ -1,0 +1,21 @@
+curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash - 
+sudo yum install nodejs
+
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum install -y docker-ce
+systemctl start docker
+systemctl enable docker
+
+npm install yuque-broker-cli -g
+broker config
+broker build
+
+docker images
+docker ps
+docker run -d -p 7001:7001 xxxxxxxxx
+
+docker push registry.xxx.cn/yuque/broker-0.0.2-xxx:xxxxx
+
+docker stop xxxx
+docker image rm -f xxxx
